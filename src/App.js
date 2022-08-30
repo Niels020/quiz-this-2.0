@@ -5,9 +5,9 @@ import { shuffle } from './utils'
 
 
 export default function App() {
-    const NUMBER_OF_ROUNDS = 3
+    const NUMBER_OF_ROUNDS = 10
     const TIME_EACH_ROUND = 10
-    const [startGame, setStartGame] = useState(false) //!!!!!!!!
+    const [startGame, setStartGame] = useState(false)
     const [error, setError] = useState(null)
     const [isLoaded, setIsLoaded] = useState(false)
     const [data, setData] = useState([])
