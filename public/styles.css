@@ -1,0 +1,126 @@
+/* ----- general styles ----- */
+
+body {
+    margin: 0 auto;
+    padding: 0;
+    font-family: 'Oswald', sans-serif; 
+    letter-spacing: .4px;   
+    text-align: center;
+    max-width: 800px;
+    min-width: 400px;
+    background-color: rgba(135, 189, 218, 0.6);
+}
+
+.button {
+    font-family: inherit;
+    cursor: pointer;
+    border: none;
+    border-radius: 12px;
+    background-color: rgba(135, 189, 218, 0.6);
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin: 2em;
+    padding: 0 2em;
+    min-height: 90vh;
+    border-radius: 15px;
+    background-color: whitesmoke;
+}
+
+/* ----- startScreen styles ----- */
+
+.startScreen--title {
+    margin: 1em 0 0;
+}
+
+.startScreen--description > * {
+    margin: 0;
+}
+
+.startScreen--form--select {
+    padding: 6px 16px;
+    margin-bottom: 1.5em;
+    font-size: 1em;
+    text-align: center;
+    width: 220px;
+    font-family: inherit;
+    letter-spacing: .5px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* ----- start / score Screen styles ----- */
+
+.startScreen--form-button,
+.scoreScreen--button {
+    margin: .5em 0 2em;
+    padding: 12px 30px;
+    font-size: 1em;
+    letter-spacing: .5px;
+}
+
+/* -----scoreScreen styles ----- */
+
+.score--container {
+    display: flex;
+    justify-content: space-around;
+    align-items: baseline;
+}
+
+/* ----- roundDisplay styles ----- */
+
+.roundDisplay--info-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+.roundDisplay--timer {
+    font-size: 3.4em;
+    margin: 0;
+}
+
+/* ----- roundQnA styles ----- */
+
+.roundQnA--question {
+    margin: 0 0 .5em 0;
+    font-size: 1.1em;
+    font-weight: 400;
+}
+
+.roundQnA--answers-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: .75em;
+}
+
+/* ----- roundButton styles ----- */
+
+.roundButtons-container {
+    display: flex;
+    justify-content: space-around;
+    margin: 0 2em 2em;
+}
+
+.roundButton {
+    width: 160px;
+    padding: 14px 0;
+}
+/* ----- answer styles ----- */
+
+.answer-container {
+    margin: 0 auto;
+    padding: .2em 1em;
+    min-width: 10em;
+    font-weight: 300;
+    cursor: pointer;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    border-radius: 20px;
+}
+
+.answer {
+    margin: 0;
+}
