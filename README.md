@@ -1,10 +1,10 @@
 # quiz-this-2.0
-quiz game in react
+## quiz game in react
 
-## Quiz I build for own learning purposes.
+Quiz I build for own learning purposes.
 
-## Used API from https://the-trivia-api.com
+Used API from https://the-trivia-api.com
 
-## Also build a custom countdown hook.
+Also build a custom countdown hook.
 
-## To run command: npm start
+To run command: npm start
