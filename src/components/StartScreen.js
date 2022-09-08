@@ -6,6 +6,23 @@ function StartScreen(
         numberOfRounds, 
         timeEachRound 
     }) {
+
+    const difficultyOptions = [
+        {value: '', label: 'All Dificulties'},
+        {value: '&difficulty=easy', label: 'Easy'},
+        {value: '&difficulty=medium', label: 'Medium'},
+        {value: '&difficulty=hard', label: 'Hard'}
+    ]
+
+    const categoryOptions = [
+        {value: '', label: 'All Categories'},
+        {value: '&category=9', label: 'General Knowledge'},
+        {value: '&category=17', label: 'Science & Nature'},
+        {value: '&category=26', label: 'Celebrities'},
+        {value: '&category=21', label: 'Sports'},
+        {value: '&category=23', label: 'History'},
+        {value: '&category=24', label: 'Politics'}
+    ]
         
     return (
         <main className='container'>
@@ -30,10 +47,11 @@ function StartScreen(
                         value={startSettings.difficulty}
                         name='difficulty'
                     >
-                        <option value=''>All difficulties</option>
-                        <option value='&difficulty=easy'>easy</option>
-                        <option value='&difficulty=medium'>medium</option>
-                        <option value='&difficulty=hard'>hard</option>
+                        {difficultyOptions.map((option, index) => {
+                            return (
+                                <option key={index} value={option.value}>{option.label}</option>
+                            )
+                        })}
                     </select>
                 </div>
                 
@@ -47,13 +65,11 @@ function StartScreen(
                         value={startSettings.category}
                         name='category'
                     >
-                        <option value=''>All categories</option>
-                        <option value='&category=9'>General Knowledge</option>
-                        <option value='&category=17'>Science & Nature</option>
-                        <option value='&category=26'>Celebrities</option>
-                        <option value='&category=21'>Sports</option>
-                        <option value='&category=23'>History</option>
-                        <option value='&category=24'>Politics</option>
+                        {categoryOptions.map((option, index) => {
+                            return (
+                                <option key={index} value={option.value}>{option.label}</option>
+                            )
+                        })}
                     </select> 
                 </div>
 
