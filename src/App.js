@@ -1,20 +1,22 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import Quiz from './components/Quiz'
 import StartScreen from './components/StartScreen'
+import useFetch from './hooks/useFetch'
 import { shuffle } from './utils'
 
 
 export default function App() {
     const NUMBER_OF_ROUNDS = 10
     const TIME_EACH_ROUND = 10
+
     const [startGame, setStartGame] = useState(false)
-    const [error, setError] = useState(null)
-    const [isLoaded, setIsLoaded] = useState(false)
-    const [data, setData] = useState([])
-    const [startSettings, setStartSettings] = useState({
-        difficulty: '',
-        category: ''
-    })
+    const [startSettings, setStartSettings] = useState({ difficulty: '', category: '' })
+
+    const optionsUrl = `${startSettings.difficulty}${startSettings.category}`
+    const url = `https://opentdb.com/api.php?amount=${NUMBER_OF_ROUNDS}${optionsUrl}&type=multiple`
+
+    const { data, isLoading, isError } = useFetch(url, startGame)
+
 
     function handleStartSettings(event) {
         setStartSettings(prevStartSettings => {
@@ -25,26 +27,8 @@ export default function App() {
         })
     }
 
-
-    useEffect(() => {
-        const optionsUrl = `${startSettings.difficulty}${startSettings.category}`
-
-        fetch(`https://opentdb.com/api.php?amount=${NUMBER_OF_ROUNDS}${optionsUrl}&type=multiple`)
-            .then(res => res.json())
-            .then(
-                (res) => {
-                    setIsLoaded(true)
-                    setData(res.results)
-                },
-                (error) => {
-                    setIsLoaded(true)
-                    setError(error)
-            })
-    },[startSettings])
-
-
-    function formatData() {
-        return data.map(el => {
+    function formatData(arr) {
+        return arr.map(el => {
             return {
                 question: el.question,
                 correct: el.correct_answer,
@@ -53,18 +37,17 @@ export default function App() {
         })
     }
 
+
     function shuffleAnswers(incorrect, correct) {
         const answers = incorrect.concat(correct)
         const shuffledAnswers = shuffle(answers)
         return shuffledAnswers
     }
 
+
     function returnToStart() {
         setStartGame(false)
-        setStartSettings({
-            difficulty: '',
-            category: ''
-        })
+        setStartSettings({ difficulty: '', category: '' })
     }
 
     if(!startGame) {
@@ -82,16 +65,16 @@ export default function App() {
         )
     } else {
 
-        if(error) {
+        if(isError) {
             return <div>error. please refresh</div>
-        } else if(!isLoaded) {
+        } else if(isLoading) {
             return <div>loading...</div>
         } else {
             return (
 
                 <div>
                     <Quiz
-                        data={formatData(data)}
+                        data={formatData(data.results)}
                         returnToStart={returnToStart}
                         difficulty={startSettings.difficulty}
                         timeEachRound={TIME_EACH_ROUND}
