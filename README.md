@@ -1,4 +1,4 @@
-# quiz-this-2.0
+# quiz-this
 ## quiz game in react
 
 Quiz I build for own learning purposes.
